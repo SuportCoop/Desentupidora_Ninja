@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desentupidora Ninja | Especialistas em Soluções 24h</title>
+    <link rel="icon" type="image/x-icon" href="assests/IMG/Logotipo (Fundo Transparente).png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="assests/CSS/index.css">
+
+    <!-- <style>
+        :root {
+            --vermelho: #fe0000;
+            --preto: #020202;
+            --preto-suave: #121212;
+            --cinza: #f4f4f4;
+            --branco: #ffffff;
+            --whatsapp: #25d366;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--branco);
+            color: var(--preto);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* HEADER */
+        header {
+            background: var(--preto);
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 3px solid var(--vermelho);
+        }
+
+        #img-logo {
+            width: 10px;
+        }
+
+        .logo-area {
+            color: var(--branco);
+            font-size: 1.5rem;
+            font-weight: 900;
+        }
+
+        .logo-area span {
+            color: var(--vermelho);
+        }
+
+        .nav-links a {
+            color: var(--branco);
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: bold;
+            transition: 0.3s;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--vermelho);
+        }
+
+        /* CARROSSEL HERO */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 85vh;
+            overflow: hidden;
+            background: var(--preto);
+            padding-top: 80px;
+        }
+
+        .carousel-track {
+            display: flex;
+            width: 200%;
+            /* Para 2 slides */
+            height: 100%;
+            transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .slide {
+            width: 50%;
+            /* Metade do track de 200% */
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            color: var(--branco);
+            padding: 0 5%;
+        }
+
+        .slide-1 {
+            background: linear-gradient(rgba(2, 2, 2, 0.7), rgba(2, 2, 2, 0.9)), url('https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&q=80&w=1470');
+        }
+
+        .slide-2 {
+            background: linear-gradient(rgba(2, 2, 2, 0.85), rgba(2, 2, 2, 0.95)), url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?auto=format&fit=crop&q=80&w=1470');
+        }
+
+        .slide h1 {
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .slide h1 span {
+            color: var(--vermelho);
+        }
+
+        .slide p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-main {
+            background: var(--vermelho);
+            color: white;
+            padding: 18px 35px;
+            text-decoration: none;
+            font-weight: 900;
+            border-radius: 5px;
+            text-transform: uppercase;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .btn-main:hover {
+            background: white;
+            color: var(--vermelho);
+            transform: scale(1.05);
+        }
+
+        .mini-services-slide {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            max-width: 600px;
+            margin: 0 auto 30px;
+        }
+
+        .mini-item {
+            border: 1px solid var(--vermelho);
+            padding: 10px;
+            border-radius: 5px;
+            background: rgba(254, 0, 0, 0.1);
+        }
+
+        .mini-item i {
+            color: var(--vermelho);
+            font-size: 1.2rem;
+        }
+
+        .mini-item p {
+            font-size: 0.8rem !important;
+            margin: 5px 0 0 !important;
+            font-weight: bold;
+            color: white;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 55%;
+            transform: translateY(-50%);
+            background: rgba(254, 0, 0, 0.3);
+            color: white;
+            border: none;
+            padding: 15px;
+            cursor: pointer;
+            z-index: 10;
+            border-radius: 50%;
+        }
+
+        .prev {
+            left: 20px;
+        }
+
+        .next {
+            right: 20px;
+        }
+
+        /* SEÇÃO DE SERVIÇOS */
+        .section-padding {
+            padding: 80px 5%;
+        }
+
+        .title-center {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .title-center h2 {
+            font-size: 2.5rem;
+            text-transform: uppercase;
+            font-weight: 900;
+        }
+
+        .title-center .bar {
+            width: 80px;
+            height: 5px;
+            background: var(--vermelho);
+            margin: 10px auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .service-card {
+            background: var(--cinza);
+            padding: 40px 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: 0.3s;
+            border-bottom: 4px solid transparent;
+        }
+
+        .service-card:hover {
+            border-color: var(--vermelho);
+            background: #fff;
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .service-card i {
+            font-size: 3rem;
+            color: var(--vermelho);
+            margin-bottom: 20px;
+        }
+
+        /* SEÇÃO DICAS */
+        .tips-section {
+            background: var(--preto);
+            color: var(--branco);
+        }
+
+        .tips-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .tip-item {
+            background: var(--preto-suave);
+            padding: 30px;
+            border-left: 5px solid var(--vermelho);
+            transition: 0.3s;
+        }
+
+        .tip-item:hover {
+            background: #1a1a1a;
+        }
+
+        .tip-item h4 {
+            color: var(--vermelho);
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        /* SOBRE E FAQ */
+        .about-faq {
+            background: var(--cinza);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            padding: 80px 5%;
+        }
+
+        .about-box,
+        .faq-box {
+            flex: 1;
+            min-width: 320px;
+        }
+
+        .faq-item {
+            background: #fff;
+            margin-bottom: 15px;
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 4px solid var(--vermelho);
+        }
+
+        .faq-item strong {
+            display: block;
+            color: var(--vermelho);
+            margin-bottom: 5px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: var(--preto);
+            color: white;
+            padding: 60px 5% 20px;
+            border-top: 5px solid var(--vermelho);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+        }
+
+        .footer-grid h4 {
+            color: var(--vermelho);
+            margin-bottom: 15px;
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: var(--whatsapp);
+            color: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 35px;
+            z-index: 2000;
+            transition: 0.3s;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .slide h1 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .mini-services-slide {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .carousel-btn {
+                display: none;
+            }
+        } -->
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <!-- <div class="logo-area"><i class="fas fa-user-ninja"></i> DESENTUPIDORA <span>NINJA</span></div> -->
+        <div >
+            <img src="assests/IMG/Logotipo (Fundo Transparente).png" alt="">
+        </div>
+        <div class="logo-area"> DESENTUPIDORA <span>NINJA</span>
+        </div>
+        <nav class="nav-links">
+            <a href="#inicio">INÍCIO</a>
+            <a href="#servicos">SERVIÇOS</a>
+            <a href="#dicas">DICAS</a>
+            <a href="#sobre">SOBRE</a>
+            <a href="#contato">CONTATO</a>
+        </nav>
+    </header>
+
+    <section class="carousel-container" id="inicio">
+        <div class="carousel-track" id="track">
+            <div class="slide slide-1">
+                <div>
+                    <h1>RESOLVEMOS O QUE OS <br><span>OUTROS NÃO CONSEGUEM</span></h1>
+                    <p>Atendimento emergencial 24h para Desentupimento, Dedetização e Hidráulica. Rapidez e precisão de
+                        especialista.</p>
+                    <a href="https://wa.me/5511991295540" class="btn-main"><i class="fab fa-whatsapp"></i> Chamar no
+                        WhatsApp</a>
+                </div>
+            </div>
+            <div class="slide slide-2">
+                <div>
+                    <h1>SOLUÇÕES <span>NINJA</span> 24H</h1>
+                    <p>Equipe técnica em pontos estratégicos para atendimento em tempo recorde.</p>
+                    <div class="mini-services-slide">
+                        <div class="mini-item"><i class="fas fa-vial"></i>
+                            <p>Dedetização</p>
+                        </div>
+                        <div class="mini-item"><i class="fas fa-faucet"></i>
+                            <p>Desentupir</p>
+                        </div>
+                        <div class="mini-item"><i class="fas fa-search"></i>
+                            <p>Vazamentos</p>
+                        </div>
+                        <div class="mini-item"><i class="fas fa-tools"></i>
+                            <p>Hidráulica</p>
+                        </div>
+                        <div class="mini-item"><i class="fas fa-water"></i>
+                            <p>Hidrojato</p>
+                        </div>
+                        <div class="mini-item"><i class="fas fa-trash-restore"></i>
+                            <p>Caixas d'água</p>
+                        </div>
+                    </div>
+                    <a href="https://wa.me/5511991295540" class="btn-main"><i class="fab fa-whatsapp"></i> Orçamento
+                        Grátis</a>
+                </div>
+            </div>
+        </div>
+        <button class="carousel-btn prev" onclick="moveSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+        <button class="carousel-btn next" onclick="moveSlide(1)"><i class="fas fa-chevron-right"></i></button>
+    </section>
+
+    <section class="section-padding" id="servicos">
+        <div class="title-center">
+            <h2>Nossos Serviços</h2>
+            <div class="bar"></div>
+            <p>Atendimento Comercial, Industrial e Residencial</p>
+        </div>
+        <div class="services-grid">
+            <div class="service-card"><i class="fas fa-vial"></i>
+                <h3>Dedetização</h3>
+                <p>Controle de pragas, baratas, cupins e escorpiões.</p>
+            </div>
+            <div class="service-card"><i class="fas fa-faucet"></i>
+                <h3>Desentupimento</h3>
+                <p>Pias, vasos, ralos, caixas de gordura e esgoto.</p>
+            </div>
+            <div class="service-card"><i class="fas fa-search"></i>
+                <h3>Caça Vazamentos</h3>
+                <p>Detecção eletrônica sem quebrar paredes.</p>
+            </div>
+            <div class="service-card"><i class="fas fa-tools"></i>
+                <h3>Reparos Hidráulicos</h3>
+                <p>Manutenção preventiva e corretiva de tubulações.</p>
+            </div>
+            <div class="service-card"><i class="fas fa-water"></i>
+                <h3>Hidrojateamento</h3>
+                <p>Limpeza de alta pressão para colunas e galerias.</p>
+            </div>
+            <div class="service-card"><i class="fas fa-trash-restore"></i>
+                <h3>Limpeza de Caixa</h3>
+                <p>Higienização completa de reservatórios de água.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section-padding tips-section" id="dicas">
+        <div class="title-center">
+            <h2 style="color: white;">Dicas de Prevenção</h2>
+            <div class="bar"></div>
+            <p>Pequenas atitudes evitam grandes prejuízos</p>
+        </div>
+        <div class="tips-grid">
+            <div class="tip-item">
+                <h4>Cozinha</h4>
+                <p>O óleo de cozinha é o maior inimigo dos canos. Guarde-o em garrafas pet. Use grelhas de proteção em
+                    todas as pias.</p>
+            </div>
+            <div class="tip-item">
+                <h4>Banheiro</h4>
+                <p>Nunca jogue papel higiênico, cotonetes ou cabelos no vaso. Esses detritos criam uma barreira sólida
+                    difícil de remover.</p>
+            </div>
+            <div class="tip-item">
+                <h4>Manutenção</h4>
+                <p>Realize a limpeza preventiva da caixa de gordura e da caixa d'água a cada 6 meses para garantir fluxo
+                    e saúde.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-faq" id="sobre">
+        <div class="about-box">
+            <h2>Sobre a <span style="color: var(--vermelho);">Ninja</span></h2>
+            <div class="bar" style="margin: 10px 0 20px; width: 50px; height: 4px; background: var(--vermelho);"></div>
+            <p>Especialista no mercado de São Paulo, a <strong>Desentupidora Ninja</strong> oferece transparência e
+                preço justo. Nossos técnicos são treinados para resolver problemas complexos com o mínimo de intervenção
+                possível.</p>
+            <p style="margin-top: 15px;">✅ Orçamento Grátis<br>✅ Garantia por Escrito<br>✅ Tecnologia de Ponta</p>
+        </div>
+        <div class="faq-box">
+            <h2>Dúvidas Comuns</h2>
+            <div class="faq-item"><strong>Quanto tempo demora a chegada?</strong>Em média 40 minutos para toda SP e
+                Região.</div>
+            <div class="faq-item"><strong>Quais as formas de pagamento?</strong>Aceitamos PIX, Cartões de Crédito e
+                Débito.</div>
+        </div>
+    </section>
+
+    <footer id="contato">
+        <div class="footer-grid">
+            <div>
+                <h4>NINJA 24H</h4>
+                <p>Sua paz de espírito é nossa missão. Problema com esgoto ou pragas? Chame o Ninja.</p>
+            </div>
+            <div>
+                <h4>CONTATO</h4>
+                <a href="http://wa.link/qn0fj9"><p><i class="fab fa-whatsapp"></i> (11) 99129-5540</p></a>
+                <a href="https://www.instagram.com/desentupidora.ninjaa/"><p><i class="fab fa-instagram"></i> @desentupidora.ninja</p></a>
+            </div>
+            <div>
+                <h4>COBERTURA</h4>
+                <p>São Paulo Capital, ABC e Grande SP.</p>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 40px; font-size: 0.8rem; opacity: 0.5;">© 2026 Desentupidora Ninja.
+            Todos os direitos reservados.</p>
+    </footer>
+
+    <a href="https://wa.me/5511991295540" class="whatsapp-float" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        let currentSlide = 0;
+        const track = document.getElementById('track');
+        const totalSlides = 2;
+
+        function moveSlide(direction) {
+            currentSlide += direction;
+            if (currentSlide >= totalSlides) currentSlide = 0;
+            if (currentSlide < 0) currentSlide = totalSlides - 1;
+            track.style.transform = `translateX(-${currentSlide * 50}%)`;
+        }
+
+        setInterval(() => moveSlide(1), 5000);
+    </script>
+</body>
+
+</html>
