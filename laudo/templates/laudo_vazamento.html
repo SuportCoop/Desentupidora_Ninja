@@ -1,0 +1,324 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laudo Técnico de Vazamento - {{ cliente.nome }}</title>
+    <style>
+        :root {
+            --primary-color: #E31C23; /* Vermelho Ninja */
+            --secondary-color: #1A1A1A; /* Preto/Cinza Escuro */
+            --text-color: #333333;
+            --bg-light: #F4F4F4;
+            --border-color: #DDDDDD;
+        }
+
+        /* Força o navegador a zerar as margens padrões da folha */
+        @page {
+            size: A4;
+            margin: 0;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.4;
+            color: var(--text-color);
+            background-color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+            -webkit-print-color-adjust: exact;
+            print-color-adjust: exact;
+        }
+
+        /* Container travado nas medidas exatas do papel A4 */
+        .container {
+            width: 210mm;
+            height: 297mm;
+            margin: 0 auto;
+            padding: 20mm;
+            background-color: #FFFFFF;
+            page-break-after: always;
+        }
+
+        /* Tabela estrutural principal */
+        .laudo-tabela {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed;
+        }
+
+        /* Estilo dos Títulos de Seção */
+        .section-title {
+            font-size: 14px;
+            color: #FFFFFF;
+            background-color: var(--secondary-color);
+            padding: 6px 12px;
+            text-transform: uppercase;
+            font-weight: 600;
+            border-left: 5px solid var(--primary-color);
+        }
+
+        /* Blocos de dados */
+        .dado-grupo {
+            margin-bottom: 8px;
+            width: 100%;
+        }
+
+        .dado-label {
+            font-size: 11px;
+            font-weight: bold;
+            color: #555555;
+            text-transform: uppercase;
+            margin-bottom: 3px;
+        }
+
+        .dado-valor {
+            font-size: 13.5px;
+            color: #111111;
+            background-color: var(--bg-light);
+            padding: 8px 10px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            min-height: 35px;
+            word-wrap: break-word;
+        }
+
+        /* Texto de introdução do objetivo */
+        .objetivo-texto {
+            font-size: 14px;
+            text-align: justify;
+            background-color: var(--bg-light);
+            padding: 12px 15px;
+            border-radius: 4px;
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--border-color);
+        }
+
+        /* Bloco de Assinatura Organizado dentro da Tabela */
+        .footer-assinatura {
+            text-align: center;
+            font-size: 13.5px;
+            width: 100%;
+        }
+
+        .linha-assinatura {
+            width: 240px;
+            border-top: 1px solid var(--secondary-color);
+            margin: 0 auto 8px auto;
+        }
+
+        .assinante-nome {
+            font-weight: bold;
+            color: var(--secondary-color);
+        }
+
+        .assinante-cargo {
+            font-size: 12px;
+            color: #555555;
+        }
+
+        /* CSS de visualização em tela antes de imprimir */
+        @media screen {
+            body {
+                background-color: #E5E5E5;
+                padding: 30px 0;
+            }
+            .container {
+                box-shadow: 0 0 15px rgba(0,0,0,0.18);
+                border-radius: 2px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <table class="laudo-tabela">
+        <colgroup>
+            <col style="width: 50%;">
+            <col style="width: 50%;">
+        </colgroup>
+
+        <tbody>
+            <tr>
+                <td style="vertical-align: middle; padding-bottom: 20px; border-bottom: 3px solid var(--primary-color);">
+                    <img style="max-height: 65px; width: auto; vertical-align: middle; margin-right: 12px;" src="{% static 'img/Logo.png' %}" alt="Logo Desentupidora Ninja">
+                    <p style="display: inline-block; font-size: 22px; font-weight: bold; color: var(--secondary-color); text-transform: uppercase; margin: 0; vertical-align: middle;">
+                        Desentupidora <span style="color: var(--primary-color);">Ninja</span>
+                    </p>
+                </td>
+                <td style="text-align: right; vertical-align: middle; padding-bottom: 20px; border-bottom: 3px solid var(--primary-color);">
+                    <h1 style="font-size: 18px; color: var(--secondary-color); margin: 0; text-transform: uppercase; letter-spacing: 0.5px;">
+                        Laudo Técnico de Vazamento
+                    </h1>
+                </td>
+            </tr>
+
+            <tr><td colspan="2" style="height: 15px;"></td></tr>
+
+            <tr>
+                <td colspan="2">
+                    <div class="objetivo-texto">
+                        Este Laudo Técnico tem como objetivo apresentar os resultados da inspeção realizada no imóvel localizado na 
+                        <strong>{{ cliente.endereco }}, {{ cliente.numero }} - {{ cliente.bairro }}, {{ cliente.cidade }} - {{ cliente.uf }}</strong>. 
+                        A inspeção teve como finalidade identificar e localizar vazamentos de água, utilizando os procedimentos de 
+                        <strong>{{ laudo.procedimentos.all|join:", " }}</strong>.
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2" style="padding-top: 10px; padding-bottom: 5px;">
+                    <div class="section-title">Dados do Cliente</div>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <div class="dado-grupo">
+                        <div class="dado-label">Nome / Razão Social</div>
+                        <div class="dado-valor">{{ cliente.nome }}</div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td style="padding-right: 10px;">
+                    <div class="dado-grupo">
+                        <div class="dado-label">CPF / CNPJ</div>
+                        <div class="dado-valor">{{ cliente.documento }}</div>
+                    </div>
+                </td>
+                <td style="padding-left: 10px;">
+                    <div class="dado-grupo">
+                        <div class="dado-label">Telefone</div>
+                        <div class="dado-valor">{{ cliente.telefone }}</div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <div class="dado-grupo">
+                        <div class="dado-label">Endereço</div>
+                        <div class="dado-valor">{{ cliente.endereco }}, {{ cliente.numero }}</div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td style="padding-right: 10px;">
+                    <div class="dado-grupo">
+                        <div class="dado-label">Bairro</div>
+                        <div class="dado-valor">{{ cliente.bairro }}</div>
+                    </div>
+                </td>
+                <td style="padding-left: 10px;">
+                    <div class="dado-grupo">
+                        <div class="dado-label">CEP</div>
+                        <div class="dado-valor">{{ cliente.cep }}</div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td style="padding-right: 10px;">
+                    <div class="dado-grupo">
+                        <div class="dado-label">Cidade</div>
+                        <div class="dado-valor">{{ cliente.cidade }}</div>
+                    </div>
+                </td>
+                <td style="padding-left: 10px;">
+                    <div class="dado-grupo">
+                        <div class="dado-label">UF</div>
+                        <div class="dado-valor">{{ cliente.uf }}</div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2" style="padding-top: 10px; padding-bottom: 5px;">
+                    <div class="section-title">Detalhes da Inspeção</div>
+                </td>
+            </tr>
+
+            <tr>
+                <td style="padding-right: 10px;">
+                    <div class="dado-grupo">
+                        <div class="dado-label">Data da Inspeção</div>
+                        <div class="dado-valor">{{ laudo.data_inspecao|date:"d/m/Y" }}</div>
+                    </div>
+                </td>
+                <td style="padding-left: 10px;">
+                    <div class="dado-grupo">
+                        <div class="dado-label">Procedimentos de Localização</div>
+                        <div class="dado-valor">{{ laudo.procedimentos.all|join:", " }}</div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td style="padding-right: 10px;">
+                    <div class="dado-grupo">
+                        <div class="dado-label">Vazamento Detectado?</div>
+                        <div class="dado-valor">
+                            {% if laudo.vazamento %} Sim {% else %} Não {% endif %}
+                        </div>
+                    </div>
+                </td>
+                <td style="padding-left: 10px;">
+                    <div class="dado-grupo">
+                        <div class="dado-label">Área do Vazamento</div>
+                        <div class="dado-valor">{{ laudo.area_vazamento }}</div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2" style="padding-top: 4px;">
+                    <div class="dado-grupo">
+                        <div class="dado-label">Local Exato do Vazamento (Tubulação)</div>
+                        <div class="dado-valor">{{ laudo.local_vazamento }}</div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2" style="padding-top: 4px; padding-bottom: 20px;">
+                    <div class="dado-grupo">
+                        <div class="dado-label">Observações Adicionais / Serviços Executados</div>
+                        <div class="dado-valor" style="min-height: 80px; text-align: justify;">
+                            {{ laudo.observacao|linebreaksbr }}
+                        </div>
+                    </div>
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2" style="padding-top: 40px; text-align: center;">
+                    <div class="footer-assinatura">
+                        <p style="margin-bottom: 45px;">{{ cliente.cidade }}, {{ laudo.data_inspecao|date:"d \d\e F \d\e Y" }}</p>
+                        <div class="linha-assinatura"></div>
+                        <div class="assinante-nome">Técnico Responsável</div>
+                        <div class="assinante-cargo">Desentupidora Ninja</div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<script type="text/javascript">
+    window.onload = function() {
+        window.print();
+    };
+</script>
+</body>
+</html>
