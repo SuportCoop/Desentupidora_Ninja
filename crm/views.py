@@ -9,3 +9,7 @@ def buscar_cnpj(request, cnpj):
     )
     
     return JsonResponse(response.json())
+
+def cadastrar_cliente(request):
+    
+    return render(request,'cadastro_cliente.html')
