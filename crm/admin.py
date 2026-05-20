@@ -13,11 +13,11 @@ class ClienteAdmin(admin.ModelAdmin):
             'fields': ('tipo', 'documento', 'nome', 'email', 'telefone')
         }),
         ('Endereço', {
-            # Adicione todos os campos aqui para o JS funcionar
+            
             'fields': (
-                ('cep', 'uf'), # Em uma linha
+                ('cep', 'uf'), 
                 'endereco', 
-                ('numero', 'bairro'), # Em outra linha
+                ('numero', 'bairro'), 
                 'cidade',
             )
         }),
@@ -28,3 +28,4 @@ class ClienteAdmin(admin.ModelAdmin):
     
     class Media:
         js = ('js/buscar_cep.js',)
+        js2 = ('js/buscar_cnpj.js')

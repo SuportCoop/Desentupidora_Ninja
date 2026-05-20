@@ -117,10 +117,10 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 
 JAZZMIN_SETTINGS = {
-    "site_title": "Linkoo CRM",
-    "site_header": "Linkoo CRM",
-    "site_brand": "Linkoo CRM",
-    "welcome_sign": "Bem Variável ao Linkoo CRM",
+    "site_title": "CodeFlow CRM",
+    "site_header": "CodeFlow CRM",
+    "site_brand": "CodeFlow CRM",
+    "welcome_sign": "Bem Variável ao CodeFlow CRM",
     "copyright": "Zapflow - Codeflow",
     "search_model": ["crm.Cliente", "crm.Plano"],
     "show_ui_builder": False,
